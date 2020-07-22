@@ -130,8 +130,8 @@ def main():
         start_epoch = 0
 
         # different modules have different learning rate
-        train_params = [{'params': model.pretrained(), 'lr': args.lr},
-                        {'params': model.scratch(), 'lr': args.lr * 10}]
+        train_params = [{'params': model.pretrained.parameters(), 'lr': args.lr},
+                        {'params': model.scratch.parameters(), 'lr': args.lr * 10}]
 
         optimizer = torch.optim.Adam(train_params, lr=args.lr, betas=args.betas, weight_decay=args.weight_decay)
 
