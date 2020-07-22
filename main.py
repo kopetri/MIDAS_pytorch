@@ -234,6 +234,8 @@ def train(train_loader, model, criterion, optimizer, epoch, logger):
         # print('pred size = ', pred.size())
         # print('target size = ', target.size())
 
+        target = target.squeeze(1)
+
         loss = criterion(pred, target)
         optimizer.zero_grad()
         loss.backward()  # compute gradient and do SGD step

@@ -179,7 +179,9 @@ class ScaleAndShiftInvariantLoss(nn.Module):
 
         self.__prediction_ssi = None
 
-    def forward(self, prediction, target, mask):
+    def forward(self, prediction, target):
+
+        mask = torch.ones(target.size()).bool().cuda() # no need for mask
 
         scale, shift = compute_scale_and_shift(prediction, target, mask)
         self.__prediction_ssi = scale.view(-1, 1, 1) * prediction + shift.view(-1, 1, 1)
