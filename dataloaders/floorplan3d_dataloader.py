@@ -3,6 +3,7 @@ import dataloaders.transforms as transforms
 import torch.utils.data as data
 import os
 from PIL import Image
+import torch
 
 iheight, iwidth = 720, 1280  # raw image size
 
